@@ -8,15 +8,14 @@
 
 import Foundation
 
-protocol serviceLayerType {
+protocol ServiceLayerType {
     func confURL() -> URL
     func resultURL()
 }
 
-class serviceLayer: serviceLayerType {
+class ServiceLayer: ServiceLayerType {
     func confURL() -> URL {
         var components = URLComponents()
-        
         components.scheme = "https"
         components.host = "yandex.ru"
         components.path = "/time/sync.json"
@@ -27,8 +26,6 @@ class serviceLayer: serviceLayerType {
     func resultURL() {
         let task = URLSession.shared.dataTask(with: confURL()) {data, response, error in
             guard data != nil else { return }
-            print()
-            
         }
         task.resume()
     }

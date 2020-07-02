@@ -12,11 +12,8 @@ import Foundation
 import SafariServices
 
 class ViewController: UIViewController {
-    let service = serviceLayer()
+    let service = ServiceLayer()
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,4 +24,7 @@ class ViewController: UIViewController {
         self.present(svc, animated: true)
     }
     
+    @IBAction func searchExternalButton(_ sender: Any) {
+        UIApplication.shared.open(service.confURL())
+    }
 }
